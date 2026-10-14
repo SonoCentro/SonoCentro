@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonoCentro - Reproductor Ambisónico</title>
+    <!-- A-Frame para 360 -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <!-- Omnitone (Motor Espacial de Google para 4 Canales) -->
+    <script src="https://cdn.jsdelivr.net/npm/omnitone@1.3.0/build/omnitone.min.js"></script>
+    <!-- Leaflet para minimapa -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="recorrido.css">
+    
+    <script src="recorrido.js"></script>
+</head>
+<body>
+
+    <div id="start-overlay" class="start-overlay">
+        <div class="start-content">
+            <h2>Plaza de Bolívar</h2>
+            <p>Ponte tus audífonos. El audio ambisónico reaccionará a los movimientos de tu cabeza.</p>
+            <button id="btn-start-vr" class="btn-start">Iniciar Recorrido</button>
+        </div>
+    </div>
+
+    <a-scene cursor="rayOrigin: mouse" vr-mode-ui="enabled: false">
+        <a-assets>
+            <!-- Video puramente visual y silenciado -->
+            <video id="video360" src="video_1_360.mp4" playsinline webkit-playsinline loop="false" preload="auto" muted></video>
+            <!-- Audio ambisónico puro (Exporta tus 4 canales espaciales en un .wav) -->
+            <audio id="audio-ambisonico" src="audio_ambisonico.wav" loop="false" preload="auto"></audio>
+        </a-assets>
+
+        <a-videosphere src="#video360" rotation="0 -90 0" reproductor-youtube-360></a-videosphere>
+        
+        <a-entity id="camara-usuario" camera look-controls="reverseMouseDrag: true"></a-entity>
+    </a-scene>
+
+    <div class="ui-overlay">
+        <button id="btn-volver" class="btn-volver">Volver al Mapa</button>
+        <div id="minimap" class="minimapa-container"></div>
+        
+        <div id="barra-controles" class="barra-controles hidden">
+            <button id="btn-play-pause" class="btn-play-pause">⏸</button>
+            <input type="range" id="linea-tiempo" class="linea-tiempo" value="0" min="0" max="100" step="0.1">
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</body>
+</html>

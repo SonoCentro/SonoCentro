@@ -1,0 +1,239 @@
+/* --- Reset básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* --- ESTILOS DE LA PANTALLA DE CARGA (Loader) --- */
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000; /* Fondo blanco según tu imagen */
+    z-index: 99999; /* Por encima de absolutamente todo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader-wrapper.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loader-logo {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.waveform-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; /* Separación entre las barras */
+    height: 80px;
+}
+
+.wave-bar {
+    width: 5px;
+    background-color: #c19b38; /* Color dorado */
+    border-radius: 3px;
+    opacity: 0.2; /* Inician opacas */
+    transition: opacity 0.15s ease-in-out;
+}
+
+.wave-bar.light-up {
+    opacity: 1; /* Se iluminan al cargar */
+    box-shadow: 0 0 8px rgba(193, 155, 56, 0.6); 
+}
+
+/* --- Fondo de Video y Overlay --- */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.bg-video.active {
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1;
+}
+
+/* --- Menú Hamburguesa --- */
+.menu-icon {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform 0.3s;
+}
+
+.menu-icon .bar {
+    width: 40px;
+    height: 4px;
+    background-color: #c19b38;
+    border-radius: 2px;
+}
+
+/* --- Menú Lateral (Sidebar) --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 300px;
+    height: 100%;
+    background-color: rgba(50, 50, 50, 0.8); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 200;
+    transition: left 0.4s ease-in-out;
+    padding-top: 20px;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-header {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 60px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #c19b38;
+}
+
+.sidebar-header h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.menu-links {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.menu-links li {
+    padding: 10px 25px;
+}
+
+.menu-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu-links li a:hover {
+    color: #c19b38;
+}
+
+/* --- Contenido de la Recomendación --- */
+.content-recomendacion {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.img-audifonos {
+    width: 250px; 
+    margin-bottom: 30px;
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.8));
+    animation: flotar 4s ease-in-out infinite; 
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.titulo-consejo {
+    color: #ffffff;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.texto-consejo {
+    color: #ffffff;
+    font-size: 1.4rem;
+    max-width: 800px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* --- Botón Continuar --- */
+.btn-continuar {
+    padding: 12px 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    background: linear-gradient(to right, #b48600, #ffcc00, #b48600); 
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    transition: transform 0.2s, filter 0.2s;
+    letter-spacing: 2px;
+}
+
+.btn-continuar:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}

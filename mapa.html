@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonoCentro - Mapa Interactivo</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="mapa.css">
+</head>
+<body>
+
+    <!-- PANTALLA DE CARGA (Loader) -->
+    <div id="loader-wrapper" class="loader-wrapper">
+        <div class="loader-content">
+            <img src="Logo.png" alt="Logo SonoCentro" class="loader-logo">
+            <div id="waveform-loader" class="waveform-loader"></div>
+        </div>
+    </div>
+
+    <!-- Audio de fondo -->
+    <audio id="bg-music" loop autoplay>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Ícono del Menú -->
+    <div class="menu-icon" id="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+<!-- Menú Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Menú</h2>
+        </div>
+        <ul class="menu-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="mapa.html">Recorrido</a></li>
+            <li><a href="creditos.html">Créditos</a></li> <!-- AHORA SÍ TE LLEVARÁ A CRÉDITOS -->
+        </ul>
+    </nav>
+
+    <!-- Contenedor del Mapa -->
+    <div id="map"></div>
+
+    <!-- VENTANA EMERGENTE (Modal) PARA LA ENTREVISTA E HISTORIA -->
+    <div id="interview-modal" class="modal">
+        <!-- Botón X para cerrar -->
+        <span class="close-btn" id="close-modal">&times;</span>
+        
+        <div class="modal-layout">
+            <!-- Columna Izquierda: Historia/Información -->
+            <div class="modal-info">
+                <h2 id="modal-title">Título del Lugar</h2>
+                <p id="modal-desc">Aquí irá la descripción del lugar...</p>
+            </div>
+            
+            <!-- Columna Derecha: Video -->
+            <div class="modal-video-container">
+                <video id="interview-video" controls>
+                    Tu navegador no soporta el formato de video.
+                </video>
+            </div>
+        </div>
+
+        <!-- Botón para ir a la imagen 360 -->
+        <button class="btn-visitar-modal" id="btn-ir-recorrido">Ir al recorrido</button>
+    </div>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="mapa.js"></script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+/* --- Reset básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+    z-index: 1; /* El mapa queda en el fondo */
+}
+
+/* --- ESTILOS DE LA PANTALLA DE CARGA (Loader) --- */
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000; /* Fondo negro */
+    z-index: 99999; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader-wrapper.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loader-logo {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.waveform-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; 
+    height: 80px;
+}
+
+.wave-bar {
+    width: 5px;
+    background-color: #c19b38; /* Color dorado */
+    border-radius: 3px;
+    opacity: 0.2; 
+    transition: opacity 0.15s ease-in-out;
+}
+
+.wave-bar.light-up {
+    opacity: 1; 
+    box-shadow: 0 0 8px rgba(193, 155, 56, 0.6); 
+}
+
+/* --- Menú Hamburguesa --- */
+.menu-icon {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.menu-icon .bar {
+    width: 35px;
+    height: 4px;
+    background-color: #c19b38; 
+    border-radius: 2px;
+}
+
+/* --- Menú Lateral (Sidebar) --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 300px;
+    height: 100%;
+    background-color: rgba(50, 50, 50, 0.8); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999;
+    transition: left 0.4s ease-in-out;
+    padding-top: 20px;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-header {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 60px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #c19b38;
+}
+
+.sidebar-header h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.menu-links {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.menu-links li {
+    padding: 10px 25px;
+}
+
+.menu-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu-links li a:hover {
+    color: #c19b38;
+}
+
+/* --- Estilos para los marcadores personalizados --- */
+.custom-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.custom-marker:hover {
+    transform: scale(1.1);
+}
+
+.marker-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #000;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    background-color: #fff;
+}
+
+.marker-label {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: -10px;
+    border: 2px solid #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+/* --- NUEVA Ventana Emergente (Modal) --- */
+.modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); 
+    z-index: 2000; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+/* Recuadro principal */
+.modal-layout {
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+    max-width: 1100px;
+    height: 60vh;
+    background: rgba(20, 20, 20, 0.8); 
+    border: 1px solid #c19b38; 
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    margin-bottom: 25px; 
+}
+
+/* Columna de Texto */
+.modal-info {
+    width: 35%;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.65); 
+    color: #fff;
+    overflow-y: auto; 
+}
+
+.modal-info h2 {
+    color: #c19b38; 
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.modal-info p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Columna de Video */
+.modal-video-container {
+    width: 65%;
+    display: flex;
+    background: #000;
+}
+
+.modal-video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+/* --- Botón "Ir al recorrido" --- */
+.btn-visitar-modal {
+    padding: 12px 45px;
+    font-size: 1.5rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: #000;
+    background: linear-gradient(to right, #9e741e, #d8ab42, #f5d475, #d8ab42, #9e741e);
+    border: 2px solid #7c5810;
+    border-radius: 35px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.btn-visitar-modal:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
+}
+
+/* Botón X de cerrar */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff; 
+    font-size: 50px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    z-index: 2001;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #c19b38; 
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonoCentro - Recomendación de Audífonos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Pantalla de Carga (Loader) -->
+    <div id="loader-wrapper" class="loader-wrapper">
+        <div class="loader-content">
+            <img src="Logo.png" alt="Logo SonoCentro" class="loader-logo">
+            <!-- El contenedor vacío donde JavaScript dibujará la onda -->
+            <div id="waveform-loader" class="waveform-loader"></div>
+        </div>
+    </div>
+    
+    <!-- Audio de fondo (mantiene la música si ya estaba sonando) -->
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Video de Fondo -->
+    <div class="video-background">
+        <video id="main-video" autoplay muted playsinline>
+            <source src="Video1.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <!-- Filtro oscuro -->
+    <div class="overlay"></div>
+
+    <!-- Menú Hamburguesa Fijo -->
+    <div class="hamburger" id="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Menú Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Menú</h2>
+        </div>
+        <hr class="menu-divider">
+        <ul class="menu-items">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#">Recorrido</a></li>
+            <li><a href="#">Créditos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Central con el mensaje de audífonos -->
+    <main class="main-content">
+        <img src="Logo.png" alt="Logo SonoCentro" class="logo-small">
+        <div class="mensaje-audifonos">
+            <p class="welcome-text">¡Bienvenid@ a SonoCentro!</p>
+            <p class="sub-text">Para vivir la experiencia inmersiva, te recomendamos el uso de audífonos.</p>
+        </div>
+        <!-- Botón Siguiente que llevará al mapa o siguiente fase -->
+        <a href="mapa.html" class="btn-iniciar">Siguiente</a>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

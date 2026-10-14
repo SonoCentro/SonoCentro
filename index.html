@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonoCentro - Recorrido Virtual</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Pantalla de Carga (Loader) -->
+    <div id="loader-wrapper" class="loader-wrapper">
+        <div class="loader-content">
+            <img src="Logo.png" alt="Logo SonoCentro" class="loader-logo">
+            <!-- El contenedor vacío donde JavaScript dibujará la onda -->
+            <div id="waveform-loader" class="waveform-loader"></div>
+        </div>
+    </div>
+
+    <!-- Audio de fondo -->
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Contenedor de Videos de Fondo -->
+    <div class="video-container">
+        <div class="overlay"></div>
+        <video class="bg-video active" src="Video1.mp4" autoplay muted loop playsinline></video>
+        <video class="bg-video" src="Video2.mp4" autoplay muted loop playsinline></video>
+        <video class="bg-video" src="Video3.mp4" autoplay muted loop playsinline></video>
+        <video class="bg-video" src="Video4.mp4" autoplay muted loop playsinline></video>
+        <video class="bg-video" src="Video5.mp4" autoplay muted loop playsinline></video>
+    </div>
+
+    <!-- Ícono del Menú -->
+    <div class="menu-icon" id="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+<!-- Menú Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Menú</h2>
+        </div>
+        <ul class="menu-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="mapa.html">Recorrido</a></li>
+            <li><a href="creditos.html">Créditos</a></li> <!-- AHORA SÍ TE LLEVARÁ A CRÉDITOS -->
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="content">
+        <img src="Logo.png" alt="Logo SonoCentro" class="logo">
+        <img src="Slogan.png" alt="Slogan SonoCentro" class="slogan">
+        <!-- El botón ahora solo redirigirá -->
+        <button class="btn-iniciar" id="btn-iniciar">Iniciar</button>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

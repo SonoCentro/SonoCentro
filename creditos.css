@@ -1,0 +1,188 @@
+/* --- Reset básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    width: 100%;
+    /* Quitamos el overflow: hidden para permitir que hagas scroll */
+    background-color: #000;
+    overflow-x: hidden; /* Solo bloqueamos el scroll hacia los lados */
+}
+
+/* --- Fondo de Video y Overlay (Se mantienen fijos mientras bajas) --- */
+.video-container {
+    position: fixed; /* Se queda anclado en el fondo */
+    top: 0; left: 0; width: 100%; height: 100vh;
+    z-index: -2;
+}
+
+.bg-video {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay oscuro para que los créditos destaquen */
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); 
+    z-index: 1;
+}
+
+/* --- Menú Hamburguesa y Lateral --- */
+.menu-icon {
+    position: fixed;
+    top: 25px; left: 25px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex; flex-direction: column; gap: 6px;
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 10px; border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.menu-icon .bar {
+    width: 35px; height: 4px; background-color: #c19b38; border-radius: 2px;
+}
+
+.sidebar {
+    position: fixed; top: 0; left: -320px;
+    width: 300px; height: 100%;
+    background-color: rgba(50, 50, 50, 0.8); 
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    transition: left 0.4s ease-in-out; padding-top: 20px;
+}
+
+.sidebar.open { left: 0; }
+
+.sidebar-header {
+    margin: 60px 25px 10px;
+    border-bottom: 2px solid #c19b38;
+}
+
+.sidebar-header h2 { font-size: 1.8rem; color: #fff; font-weight: bold; }
+.menu-links { list-style: none; margin-top: 20px; }
+.menu-links li { padding: 10px 25px; }
+.menu-links li a { text-decoration: none; color: #fff; font-size: 1.5rem; font-weight: bold; transition: color 0.3s; }
+.menu-links li a:hover { color: #c19b38; }
+
+/* --- CONTENEDOR DE CRÉDITOS (Scroll manual) --- */
+.credits-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;  /* Espacio en la parte superior antes del logo */
+    padding-bottom: 80px; /* Espacio final */
+}
+
+/* Eliminamos la animación, ahora es un contenedor normal */
+.credits-scroll {
+    width: 90%;
+    max-width: 850px;
+    text-align: center;
+}
+
+/* --- Estilos de los textos generales --- */
+.credits-logo {
+    width: 350px;
+    margin-bottom: 50px;
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.5));
+}
+
+.credits-scroll h1 {
+    color: #fff; font-size: 1.2rem; letter-spacing: 3px; margin-bottom: 5px;
+}
+
+.credits-scroll h2 {
+    color: #c19b38; font-size: 2rem; margin-bottom: 70px; text-transform: uppercase;
+}
+
+.credit-block { margin-bottom: 60px; }
+.credit-block h3 { color: #c19b38; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 15px; }
+.credit-block p { color: #fff; font-size: 1.6rem; margin-bottom: 5px; }
+
+/* --- Textos de Agradecimientos --- */
+.final-block { margin-top: 80px; margin-bottom: 60px; }
+.agradecimiento-texto {
+    font-size: 1.2rem !important; 
+    margin-bottom: 35px !important; 
+    line-height: 1.5;
+    color: #ddd !important;
+}
+.homenaje-texto {
+    font-size: 1.4rem !important;
+    font-style: italic;
+    margin-top: 60px !important;
+    color: #c19b38 !important;
+}
+
+/* --- ESTILOS PARA LAS FOTOS DE ENTREVISTADOS (Una sola columna) --- */
+.interviewees-grid {
+    display: flex;
+    flex-direction: column; /* Alinea en una sola columna */
+    align-items: center;    /* Centra las tarjetas */
+    gap: 80px;              /* Espacio vertical amplio para la placa dorada */
+    margin-top: 40px;
+}
+
+.interviewee-card {
+    position: relative;
+    width: 260px; /* Un poco más grande para que luzcan más */
+    /* Doble marco: negro exterior, dorado interior */
+    border: 4px solid #000;
+    box-shadow: 0 0 0 3px #c19b38, 0 10px 20px rgba(0,0,0,0.8);
+    background-color: #000;
+}
+
+.interviewee-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Cuadrado perfecto */
+    object-fit: cover; /* Centra y recorta sin deformar */
+    display: block;
+}
+
+.interviewee-badge {
+    position: absolute;
+    bottom: -30px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 115%; 
+    background: linear-gradient(to right, #9e741e, #d8ab42, #f5d475, #d8ab42, #9e741e);
+    color: #000;
+    padding: 12px 5px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.9);
+    line-height: 1.2;
+}
+
+.interviewee-badge span {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: #222;
+}
+
+/* --- Footer --- */
+.credits-logo-small {
+    width: 150px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.copyright {
+    color: #888 !important;
+    font-size: 0.9rem !important;
+}

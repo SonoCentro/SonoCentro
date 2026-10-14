@@ -1,0 +1,33 @@
+document.addEventListener("DOMContentLoaded", () => {
+    // Mantener la música sonando
+    const bgMusic = document.getElementById('bg-music');
+    bgMusic.volume = 0.5;
+    
+    document.body.addEventListener('click', () => {
+        if (bgMusic.paused) {
+            bgMusic.play().catch(e => console.log("Auto-play prevenido", e));
+        }
+    }, { once: true });
+
+    // Lógica del Menú Lateral
+    const menuIcon = document.getElementById('menu-icon');
+    const sidebar = document.getElementById('sidebar');
+
+    menuIcon.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!sidebar.contains(event.target) && !menuIcon.contains(event.target) && sidebar.classList.contains('open')) {
+            sidebar.classList.remove('open');
+        }
+    });
+
+    // Acción del botón "Siguiente" para ir al mapa
+    const btnSiguiente = document.getElementById('btn-siguiente');
+    if (btnSiguiente) {
+        btnSiguiente.addEventListener('click', () => {
+            window.location.href = "mapa.html";
+        });
+    }
+});

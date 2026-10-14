@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonoCentro - Recomendación</title>
+    <link rel="stylesheet" href="recomendacion.css">
+</head>
+<body>
+
+    <!-- PANTALLA DE CARGA (Loader) -->
+    <div id="loader-wrapper" class="loader-wrapper">
+        <div class="loader-content">
+            <img src="Logo.png" alt="Logo SonoCentro" class="loader-logo">
+            <!-- El contenedor vacío donde JavaScript dibujará la onda -->
+            <div id="waveform-loader" class="waveform-loader"></div>
+        </div>
+    </div>
+
+    <!-- Audio de fondo -->
+    <audio id="bg-music" loop autoplay>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Contenedor de Videos de Fondo -->
+    <div class="video-container">
+        <div class="overlay"></div>
+        <video class="bg-video active" src="Video1.mp4" autoplay muted loop playsinline></video>
+        <video class="bg-video" src="Video2.mp4" autoplay muted loop playsinline></video>
+        <video class="bg-video" src="Video3.mp4" autoplay muted loop playsinline></video>
+        <video class="bg-video" src="Video4.mp4" autoplay muted loop playsinline></video>
+        <video class="bg-video" src="Video5.mp4" autoplay muted loop playsinline></video>
+    </div>
+
+    <!-- Ícono del Menú -->
+    <div class="menu-icon" id="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+<!-- Menú Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Menú</h2>
+        </div>
+        <ul class="menu-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="mapa.html">Recorrido</a></li>
+            <li><a href="creditos.html">Créditos</a></li> <!-- AHORA SÍ TE LLEVARÁ A CRÉDITOS -->
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal de la Recomendación -->
+    <main class="content-recomendacion">
+        <!-- Imagen de los audífonos -->
+        <img src="audifonos.png" alt="Recomendación Audífonos" class="img-audifonos">
+        
+        <!-- Textos -->
+        <h2 class="titulo-consejo">UN CONSEJO ANTES DE EMPEZAR...</h2>
+        <p class="texto-consejo">Para apreciar la riqueza de nuestros registros sonoros inmersivos, te invitamos a usar audífonos.</p>
+
+        <!-- Botón Continuar -->
+        <button class="btn-continuar" id="btn-continuar">CONTINUAR</button>
+    </main>
+
+    <script src="recomendacion.js"></script>
+</body>
+</html>
